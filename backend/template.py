@@ -76,7 +76,7 @@ FILES = {
     'api/routes/execution.py': 'Start, pause, resume missions.',
     'api/routes/results.py': 'Evaluation results for the dashboard.',
     'api/db/__init__.py': '',
-    'api/db/database.py': 'SQLite connection.',
+    'api/db/database.py': 'PostgreSQL connection (SQLAlchemy engine and session).',
     'api/db/models.py': 'Tables: missions, plan_versions, execution_log, events, counterexamples.',
     'api/db/repositories.py': 'Database operations.',
     'evaluation/__init__.py': '',
@@ -136,10 +136,10 @@ EMPTY_DIRS = [
 ]
 
 ROOT_FILES = {
-    "README.md": "# AEGIS backend\n\n```bash\npython -m venv .venv\nsource .venv/bin/activate        # Windows: .venv\\Scripts\\activate\npip install -r requirements.txt\ncp .env.example .env              # Windows: copy .env.example .env\nuvicorn api.main:app --reload     # run from inside backend/\npytest\n```\n",
-    "requirements.txt": "fastapi\nuvicorn[standard]\npydantic\nsqlalchemy\npython-dotenv\npyyaml\nhttpx\nollama\nanthropic\nopenai\nnumpy\npandas\nmatplotlib\njupyter\npytest\n# Optional LTLf cross-check (pick one):\n# flloat\n# Spot: conda install -c conda-forge spot\n",
-    ".env.example": "# Copy to .env and fill in. Never commit .env.\nOLLAMA_HOST=http://localhost:11434\nOLLAMA_MODEL=llama3.1:8b\nANTHROPIC_API_KEY=\nOPENAI_API_KEY=\nDATABASE_URL=sqlite:///data/aegis.db\nFRONTEND_ORIGIN=http://localhost:5173\n",
-    ".gitignore": ".env\n.venv/\n__pycache__/\n*.pyc\n.pytest_cache/\n.ipynb_checkpoints/\ndata/*.db\nevaluation/results/*\n!evaluation/results/.gitkeep\n",
+    "README.md": "# AEGIS backend\n\n```bash\npython -m venv .venv\nsource .venv/bin/activate        # Windows: .venv\\Scripts\\activate\npip install -r requirements.txt\ncp .env.example .env              # Windows: copy .env.example .env\n# create the database once: CREATE DATABASE aegis;  then set DATABASE_URL in .env\nuvicorn api.main:app --reload     # run from inside backend/\npytest\n```\n",
+    "requirements.txt": "fastapi\nuvicorn[standard]\npydantic\nsqlalchemy\npsycopg[binary]\nalembic\npython-dotenv\npyyaml\nhttpx\nollama\nanthropic\nopenai\nnumpy\npandas\nmatplotlib\njupyter\npytest\n# Optional LTLf cross-check (pick one):\n# flloat\n# Spot: conda install -c conda-forge spot\n",
+    ".env.example": "# Copy to .env and fill in. Never commit .env.\nOLLAMA_HOST=http://localhost:11434\nOLLAMA_MODEL=llama3.1:8b\nANTHROPIC_API_KEY=\nOPENAI_API_KEY=\nDATABASE_URL=postgresql+psycopg://postgres:your_password@localhost:5432/aegis\nFRONTEND_ORIGIN=http://localhost:5173\n",
+    ".gitignore": ".env\n.venv/\n__pycache__/\n*.pyc\n.pytest_cache/\n.ipynb_checkpoints/\nevaluation/results/*\n!evaluation/results/.gitkeep\n",
     "pyproject.toml": "[project]\nname = \"aegis\"\nversion = \"0.1.0\"\ndescription = \"Verification and targeted repair of LLM-generated mission plans\"\nrequires-python = \">=3.10\"\n\n[tool.pytest.ini_options]\ntestpaths = [\"tests\"]\n",
 }
 
