@@ -63,7 +63,7 @@ Natural-language mission
 | Repair | A* search, LLM repair |
 | LLMs | Local models via Ollama; one hosted model via API |
 | API | FastAPI (REST + WebSocket) |
-| Storage | SQLite (SQLAlchemy) |
+| Database | PostgreSQL (SQLAlchemy + psycopg) |
 | Frontend | React, TypeScript, Vite, react-konva, Zustand, Recharts |
 | Testing | pytest |
 
@@ -90,6 +90,7 @@ Aegis/
 
 - Python 3.10+
 - Node.js 18+
+- [PostgreSQL](https://www.postgresql.org/download/) 14+
 - [Ollama](https://ollama.com) for local models (optional if you use a hosted API)
 
 ### Backend
@@ -100,7 +101,14 @@ python -m venv .venv
 source .venv/bin/activate          # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 cp .env.example .env               # Windows: copy .env.example .env
+                                   # then set DATABASE_URL in .env
 uvicorn api.main:app --reload      # http://localhost:8000
+```
+
+Create the database once (in `psql` or pgAdmin):
+
+```sql
+CREATE DATABASE aegis;
 ```
 
 Pull a local model if you use Ollama:
