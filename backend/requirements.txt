@@ -1,0 +1,18 @@
+fastapi
+uvicorn[standard]
+pydantic
+sqlalchemy
+python-dotenv
+pyyaml
+httpx
+ollama
+anthropic
+openai
+numpy
+pandas
+matplotlib
+jupyter
+pytest
+# Optional LTLf cross-check (pick one):
+# flloat
+# Spot: conda install -c conda-forge spot
