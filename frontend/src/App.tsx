@@ -1,122 +1,90 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
+import React from "react";
 
+const DashboardPage = () => {
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
+    <div className="dashboard-page">
+      <div className="page-heading">
         <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
-          </p>
+          <p className="eyebrow">AEGIS CONTROL CENTER</p>
+          <h1>Dashboard</h1>
+          <p>Overview of your system and mission activity.</p>
         </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+        <span className="system-status">● System Online</span>
+      </div>
 
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
+      <div className="dashboard-stats">
+        <div className="stat-card">
+          <p>Total Missions</p>
+          <h2>24</h2>
+          <span>All recorded missions</span>
         </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
+
+        <div className="stat-card">
+          <p>Active Missions</p>
+          <h2>03</h2>
+          <span>Currently in progress</span>
         </div>
-      </section>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
-}
+        <div className="stat-card">
+          <p>Completed</p>
+          <h2>18</h2>
+          <span>Successfully completed</span>
+        </div>
 
-export default App
+        <div className="stat-card">
+          <p>System Health</p>
+          <h2>98%</h2>
+          <span>Overall system status</span>
+        </div>
+      </div>
+
+      <div className="dashboard-content">
+        <section className="dashboard-panel">
+          <h3>Recent Missions</h3>
+          <div className="mission-row">
+            <div>
+              <strong>Mission Alpha</strong>
+              <p>Surveillance operation</p>
+            </div>
+            <span className="completed">Completed</span>
+          </div>
+
+          <div className="mission-row">
+            <div>
+              <strong>Mission Bravo</strong>
+              <p>Area monitoring</p>
+            </div>
+            <span className="running">In Progress</span>
+          </div>
+
+          <div className="mission-row">
+            <div>
+              <strong>Mission Charlie</strong>
+              <p>Reconnaissance operation</p>
+            </div>
+            <span className="pending">Pending</span>
+          </div>
+        </section>
+
+        <section className="dashboard-panel">
+          <h3>System Overview</h3>
+          <div className="system-row">
+            <span>Backend Server</span>
+            <strong>Online</strong>
+          </div>
+          <div className="system-row">
+            <span>Database</span>
+            <strong>Connected</strong>
+          </div>
+          <div className="system-row">
+            <span>Simulation Engine</span>
+            <strong>Ready</strong>
+          </div>
+        </section>
+      </div>
+    </div>
+  );
+};
+
+export default DashboardPage;
