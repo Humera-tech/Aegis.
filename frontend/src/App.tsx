@@ -1,4 +1,5 @@
 
+import Particles from "./Particles";
 import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -67,6 +68,9 @@ function App() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6 }}
         >
+          {/* Background particle animation */}
+          <Particles />
+
           <aside className="sidebar">
             <div className="brand">
               <div className="brand-mark">A</div>

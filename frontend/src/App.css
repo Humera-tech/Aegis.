@@ -1653,3 +1653,198 @@ textarea:focus {
   }
 }
 
+/* =====================================
+   AEGIS - PREMIUM AMBIENT BACKGROUND
+===================================== */
+
+.aegis-app {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      circle at 15% 20%,
+      rgba(190, 151, 105, 0.13),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 85% 75%,
+      rgba(218, 183, 143, 0.12),
+      transparent 38%
+    ),
+    #171513;
+}
+
+/* Ambient moving light */
+
+.aegis-app::before {
+  content: "";
+  position: fixed;
+  inset: -50%;
+  z-index: -1;
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      circle at 30% 40%,
+      rgba(218, 181, 137, 0.10),
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at 70% 60%,
+      rgba(166, 125, 83, 0.10),
+      transparent 28%
+    );
+
+  animation: aegisAmbient 18s ease-in-out infinite alternate;
+}
+
+/* Soft golden light */
+
+.aegis-app::after {
+  content: "";
+  position: fixed;
+  width: 450px;
+  height: 450px;
+  top: 10%;
+  right: -180px;
+  z-index: -1;
+  pointer-events: none;
+
+  background: rgba(202, 164, 119, 0.08);
+  filter: blur(100px);
+  border-radius: 50%;
+
+  animation: aegisGlow 12s ease-in-out infinite alternate;
+}
+
+@keyframes aegisAmbient {
+  0% {
+    transform: translate(-3%, -2%) rotate(0deg);
+  }
+  100% {
+    transform: translate(3%, 2%) rotate(8deg);
+  }
+}
+
+@keyframes aegisGlow {
+  0% {
+    transform: translateY(0) scale(0.9);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(100px) scale(1.2);
+    opacity: 1;
+  }
+}
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+  .aegis-app::before,
+  .aegis-app::after {
+    animation: none;
+  }
+}
+
+.aegis-particles {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+/* Keep dashboard content above particles */
+
+.aegis-app > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* PARTICLE BACKGROUND LAYER */
+
+.aegis-app {
+  position: relative;
+  isolation: isolate;
+}
+
+.aegis-particles {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.sidebar,
+.main-area {
+  position: relative;
+  z-index: 1;
+}
+
+
+/* AEGIS PARTICLE EFFECT */
+
+.aegis-app {
+  position: relative;
+  isolation: isolate;
+}
+
+.aegis-particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.65;
+}
+
+.sidebar,
+.main-area {
+  position: relative;
+  z-index: 1;
+}
+
+/* =================================
+   AEGIS - FINAL PARTICLE EFFECT
+================================= */
+
+.aegis-app {
+  position: relative;
+  isolation: isolate;
+}
+
+.aegis-particles {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.65;
+}
+
+/* Sidebar stays above particles */
+.sidebar {
+  position: relative;
+  z-index: 3;
+}
+
+/* Main area background stays below particles */
+.main-area {
+  position: relative;
+  z-index: auto;
+}
+
+/* Dashboard content stays above particles */
+.topbar,
+.page-container {
+  position: relative;
+  z-index: 3;
+}
