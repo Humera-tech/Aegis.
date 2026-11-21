@@ -1,0 +1,21 @@
+# Node
+node_modules/
+**/node_modules/
+dist/
+**/dist/
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Editor and OS
+.vscode/
+.idea/
+.DS_Store
